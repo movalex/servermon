@@ -40,8 +40,8 @@ try:
         print(r.status_code)
         notify()
         reboot_server()
-    else:
-        print('everything is fine')
+#    else:
+#        print('everything is fine')
 except Exception as e:
     print('Error occured')
     notify()
