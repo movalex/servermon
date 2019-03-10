@@ -22,10 +22,10 @@ def notify():
 
 def reboot_server():
     ci = CloudInterface(dc=1)
-    ci.login(ARUBA_NAME, ARUBA_PASS, True)
+    ci.login(ARUBA_NAME, ARUBA_PASS, False)
     server = ci.get_vm()[0]
     if server.status != 3:
-        print('server is not working')
+        print('server is not started')
         ci.poweron_server(server)
     else:
         print('restarting server')
@@ -43,7 +43,7 @@ try:
 #    else:
 #        print('everything is fine')
 except Exception as e:
-    print('Error occured')
+    print('Unable to connect to server!')
     notify()
     reboot_server()
 
