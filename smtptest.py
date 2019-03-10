@@ -18,18 +18,19 @@ def notify():
         subject = 'Site is down!'
         body = 'Make sure your server is up.\nServer request status is not 200'
         msg = f'Subject: {subject}\n\n{body}'
-        smtp.sendmail(EMAIL_ADDRESS, 'mail@abogomolov.com', msg)
+        smtp.sendmail(EMAIL_ADDRESS, EMAIL_ADDRESS, msg)
 
 
 def reboot_server():
+    failtime = datetime.datetime.now().strftime("%d-%m-%Y %H:%M")
     ci = CloudInterface(dc=1)
     ci.login(ARUBA_NAME, ARUBA_PASS, False)
     server = ci.get_vm()[0]
     if server.status != 3:
-        print('server is not started')
+        print('Server is not started, now turning on. Date: {}'.format(failtime))
         ci.poweron_server(server)
     else:
-        print('restarting server')
+        print('Something\'s terribly wrong. Now restarting server. Date: {}'.format(failtime))
         ci.poweroff_server(server)
         time.sleep(15)
         ci.poweron_server(server)
