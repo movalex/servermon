@@ -2,6 +2,7 @@ import os
 import smtplib
 import requests
 import time
+import datetime
 from ArubaCloud.PyArubaAPI import CloudInterface
 EMAIL_ADDRESS = os.environ.get('EMAIL_USER')
 EMAIL_PASSWORD = os.environ.get('EMAIL_PASS')
@@ -40,8 +41,8 @@ try:
         print(r.status_code)
         notify()
         reboot_server()
-#    else:
-#        print('everything is fine')
+    else:
+        print('everything is fine, date: {}'.format(datetime.datetime.now().strftime("%d-%m-%Y %H:%M")))
 except Exception as e:
     print('Unable to connect to server!')
     notify()
