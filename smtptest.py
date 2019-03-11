@@ -8,6 +8,7 @@ EMAIL_ADDRESS = os.environ.get('EMAIL_USER')
 EMAIL_PASSWORD = os.environ.get('EMAIL_PASS')
 ARUBA_NAME = os.environ.get('ARUBA_NAME')
 ARUBA_PASS = os.environ.get('ARUBA_PASS')
+print(EMAIL_ADDRESS)
 
 
 def notify():
@@ -41,11 +42,11 @@ try:
     if r.status_code != 200:
         print(r.status_code)
         notify()
-        reboot_server()
+        # reboot_server()
 #    else:
 #        print('everything is fine, date: {}'.format(datetime.datetime.now().strftime("%d-%m-%Y %H:%M")))
 except Exception as e:
     print('Unable to connect to server!')
     notify()
-    reboot_server()
+    # reboot_server()
 
