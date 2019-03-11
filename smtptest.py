@@ -42,8 +42,8 @@ try:
         print(r.status_code)
         notify()
         reboot_server()
-    else:
-        print('everything is fine, date: {}'.format(datetime.datetime.now().strftime("%d-%m-%Y %H:%M")))
+#    else:
+#        print('everything is fine, date: {}'.format(datetime.datetime.now().strftime("%d-%m-%Y %H:%M")))
 except Exception as e:
     print('Unable to connect to server!')
     notify()
