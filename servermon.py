@@ -32,7 +32,7 @@ def reboot_server():
         print('Server is not started, now turning on. Date: {}'.format(failtime))
         ci.poweron_server(server)
         time.sleep(10)
-        if server.status = 3:
+        if server.status == 3:
             print('server restarted')
     else:
         print('Something\'s terribly wrong. Now restarting server. Date: {}'.format(failtime))
