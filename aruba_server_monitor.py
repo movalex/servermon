@@ -44,7 +44,7 @@ def reboot_server():
 
 
 try:
-    r = requests.get('http://proxy.abogomolov.com', timeout=5)
+    r = requests.get('http://80.211.229.96', timeout=15)
     if r.status_code != 200:
         print(r.status_code)
         notify()
